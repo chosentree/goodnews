@@ -1,24 +1,39 @@
 'use client'
 
 import { siteConfig } from '@/lib/config'
-import { useGlobal } from '@/lib/global' // 保留，以防 siteConfig 内部依赖它
+import { useGlobal } from '@/lib/global'
 import { isBrowser } from '@/lib/utils'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
+import NotionPage from '@/components/NotionPage' // 核心内容组件导入
 
-// 【核心导入】
-import NotionPage from '@/components/NotionPage'
-
-// 【安全组件】
+// 动态导入组件 (仅保留 LayoutSlug 依赖的)
 const ArticleLock = dynamic(() => import('./components/ArticleLock'), {
   ssr: false
 })
 
+// 导入配置 (必须保留)
+import CONFIG from './config'
+
+
+// --- 【极简占位符布局 (保留结构完整性)】 ---
+
+const LayoutBase = ({ children }) => <>{children}</>
+const LayoutIndex = props => <LayoutPostList {...props} />
+const LayoutPostList = () => <div>Post List Placeholder</div>
+const LayoutSearch = () => <div>Search Placeholder</div>
+const LayoutArchive = () => <div>Archive Placeholder</div>
+const Layout404 = () => <div>404 Not Found</div>
+const LayoutCategoryIndex = () => <div>Category Index Placeholder</div>
+const LayoutTagIndex = () => <div>Tag Index Placeholder</div>
+
+
+// --- 【核心修复组件：LayoutSlug】 ---
 
 /**
- * 文章详情 (极简版)
- * 显示：名称、播放量（阅读量）、正文
+ * 文章详情 (极简版，已修复编译错误)
+ * 只显示：名称、播放量（阅读量）、正文
  * 隐藏：发布时间
  * @param {*} props 包含 post, lock, validPassword 等数据
  * @returns
@@ -68,5 +83,6 @@ const LayoutSlug = props => {
                 {post.title}
             </h1>
             
-            {/* 元数据容器：只保留播放量 */}
-            <div className
+            {/* 播放量/阅读量 */}
+            <div className='text-sm text-gray-500 mb-6 flex space-x-4'>
+                <span>👁️‍🗨️ 阅读量: {view
