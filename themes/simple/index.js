@@ -79,7 +79,11 @@ const LayoutBase = props => {
 
         {siteConfig('SIMPLE_TOP_BAR', null, CONFIG) && <TopBar {...props} />}
 
-    
+        {/* 顶部LOGO */}
+        <Header {...props} />
+
+        {/* 导航栏 */}
+        <NavBar {...props} />
 
         {/* 主体 */}
         <div
@@ -118,7 +122,13 @@ const LayoutBase = props => {
 
         <div className='fixed right-4 bottom-4 z-20'>
           <JumpToTopButton />
-         
+        </div>
+
+        {/* 搜索框 */}
+        <AlgoliaSearchModal cRef={searchModal} {...props} />
+
+        <Footer {...props} />
+      </div>
     </ThemeGlobalSimple.Provider>
   )
 }
@@ -217,17 +227,32 @@ const LayoutSlug = props => {
       {!lock && post && (
         <div className={`px-2  ${fullWidth ? '' : 'xl:max-w-4xl 2xl:max-w-6xl'}`}>
           {/* 文章信息 */}
-// delste           <ArticleInfo post={post} />
+          <ArticleInfo post={post} />
 
           {/* 广告嵌入 */}
           {/* <AdSlot type={'in-article'} /> */}
-// delste           <WWAds orientation='horizontal' className='w-full' />
+          <WWAds orientation='horizontal' className='w-full' />
 
           <div id='article-wrapper'>
             {/* Notion文章主体 */}
             {!lock && <NotionPage post={post} />}
           </div>
 
+          {/* 分享 */}
+          <ShareBar post={post} />
+
+          {/* 广告嵌入 */}
+          <AdSlot type={'in-article'} />
+
+          {post?.type === 'Post' && (
+            <>
+              <ArticleAround prev={prev} next={next} />
+              <RecommendPosts recommendPosts={recommendPosts} />
+            </>
+          )}
+
+          {/* 评论区 */}
+          <Comment frontMatter={post} />
         </div>
       )}
     </>
