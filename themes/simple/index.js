@@ -80,10 +80,10 @@ const LayoutBase = props => {
         {siteConfig('SIMPLE_TOP_BAR', null, CONFIG) && <TopBar {...props} />}
 
         {/* 顶部LOGO */}
-        <Header {...props} />
+// delste       <Header {...props} />
 
         {/* 导航栏 */}
-        <NavBar {...props} />
+// delste        <NavBar {...props} />
 
         {/* 主体 */}
         <div
@@ -122,13 +122,13 @@ const LayoutBase = props => {
 
         <div className='fixed right-4 bottom-4 z-20'>
           <JumpToTopButton />
-        </div>
+// delste         </div>
 
         {/* 搜索框 */}
-        <AlgoliaSearchModal cRef={searchModal} {...props} />
+// delste         <AlgoliaSearchModal cRef={searchModal} {...props} />
 
-        <Footer {...props} />
-      </div>
+// delste         <Footer {...props} />
+// delste       </div>
     </ThemeGlobalSimple.Provider>
   )
 }
@@ -227,11 +227,11 @@ const LayoutSlug = props => {
       {!lock && post && (
         <div className={`px-2  ${fullWidth ? '' : 'xl:max-w-4xl 2xl:max-w-6xl'}`}>
           {/* 文章信息 */}
-          <ArticleInfo post={post} />
+// delste           <ArticleInfo post={post} />
 
           {/* 广告嵌入 */}
           {/* <AdSlot type={'in-article'} /> */}
-          <WWAds orientation='horizontal' className='w-full' />
+// delste           <WWAds orientation='horizontal' className='w-full' />
 
           <div id='article-wrapper'>
             {/* Notion文章主体 */}
@@ -239,20 +239,20 @@ const LayoutSlug = props => {
           </div>
 
           {/* 分享 */}
-          <ShareBar post={post} />
+// delste           <ShareBar post={post} />
 
           {/* 广告嵌入 */}
-          <AdSlot type={'in-article'} />
+// delste           <AdSlot type={'in-article'} />
 
-          {post?.type === 'Post' && (
+// delste           {post?.type === 'Post' && (
             <>
-              <ArticleAround prev={prev} next={next} />
-              <RecommendPosts recommendPosts={recommendPosts} />
+// delste               <ArticleAround prev={prev} next={next} />
+ // delste              <RecommendPosts recommendPosts={recommendPosts} />
             </>
-          )}
+ // delste          )}
 
           {/* 评论区 */}
-          <Comment frontMatter={post} />
+// delste           <Comment frontMatter={post} />
         </div>
       )}
     </>
