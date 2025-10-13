@@ -80,9 +80,9 @@ const LayoutBase = props => {
         {siteConfig('SIMPLE_TOP_BAR', null, CONFIG) && <TopBar {...props} />}
 
         {/* 顶部LOGO */}
-        <Header {...props} />
+//        <Header {...props} />
 
-        {/* 导航栏 */}
+ //       {/* 导航栏 */}
         <NavBar {...props} />
 
         {/* 主体 */}
