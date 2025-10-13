@@ -418,7 +418,7 @@ const LayoutArchive = props => {
 
 const LayoutSlug = props => {
 
-  const { post, lock, validPassword } = props
+  const { post, lock, validPassword, prev, next, recommendPosts } = props
 
   const { fullWidth } = useGlobal()
 
@@ -451,6 +451,24 @@ const LayoutSlug = props => {
             {!lock && <NotionPage post={post} />}
 
           </div>
+
+
+
+    
+
+
+
+          {post?.type === 'Post' && (
+
+            <>
+
+              <ArticleAround prev={prev} next={next} />
+
+              <RecommendPosts recommendPosts={recommendPosts} />
+
+            </>
+
+          )}
 
 
 
