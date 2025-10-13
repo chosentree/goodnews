@@ -79,11 +79,7 @@ const LayoutBase = props => {
 
         {siteConfig('SIMPLE_TOP_BAR', null, CONFIG) && <TopBar {...props} />}
 
-        {/* 顶部LOGO */}
-// delste       <Header {...props} />
-
-        {/* 导航栏 */}
-// delste        <NavBar {...props} />
+    
 
         {/* 主体 */}
         <div
@@ -122,13 +118,7 @@ const LayoutBase = props => {
 
         <div className='fixed right-4 bottom-4 z-20'>
           <JumpToTopButton />
-// delste         </div>
-
-        {/* 搜索框 */}
-// delste         <AlgoliaSearchModal cRef={searchModal} {...props} />
-
-// delste         <Footer {...props} />
-// delste       </div>
+         
     </ThemeGlobalSimple.Provider>
   )
 }
@@ -238,21 +228,6 @@ const LayoutSlug = props => {
             {!lock && <NotionPage post={post} />}
           </div>
 
-          {/* 分享 */}
-// delste           <ShareBar post={post} />
-
-          {/* 广告嵌入 */}
-// delste           <AdSlot type={'in-article'} />
-
-// delste           {post?.type === 'Post' && (
-            <>
-// delste               <ArticleAround prev={prev} next={next} />
- // delste              <RecommendPosts recommendPosts={recommendPosts} />
-            </>
- // delste          )}
-
-          {/* 评论区 */}
-// delste           <Comment frontMatter={post} />
         </div>
       )}
     </>
